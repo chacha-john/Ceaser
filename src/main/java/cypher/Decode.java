@@ -12,7 +12,7 @@ public class Decode {
 
 
         //empty string that will hold encrypted text
-        String encryptedText = "";
+        String decryptedText = "";
 
         //loop through each character in the entire string entered by user
         for(int i = 0;i<enteredText.length();i++){
@@ -27,33 +27,33 @@ public class Decode {
 
                     //if the resulting character is less than an 'a', go allover the alphabet again
                     if (ch<'a'){
-                        encryptedText += (char) (specificCharacter + (26-key));
+                        decryptedText += (char) (specificCharacter + (26-key));
                     }
                     //if the resulting character is within the alphabet, add it as is
                     else{
-                        encryptedText += ch;
+                        decryptedText += ch;
                     }
                 } else if (Character.isUpperCase(specificCharacter)) {
                     char ch = (char) (specificCharacter-key);
 
                     //if the resulting character is less than an 'A', go allover the alphabet again
                     if (ch<'A'){
-                        encryptedText += (char) (specificCharacter + (26-key));
+                        decryptedText += (char) (specificCharacter + (26-key));
                     }
                     //if the resulting character is within the alphabet, add it as is
                     else{
-                        encryptedText += ch;
+                        decryptedText += ch;
                     }
                 }
             }
             //characters that are not letters remain just as they are
             else{
-                encryptedText +=specificCharacter;
+                decryptedText +=specificCharacter;
             }
         }
 
         //the method returns the decrypted text
-        return encryptedText;
+        return decryptedText;
 
     }
 }
