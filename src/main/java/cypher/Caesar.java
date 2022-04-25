@@ -1,7 +1,9 @@
 package cypher;
 
+import java.util.Scanner;
+
 public class Caesar {
-    public static String EncryptText(String enteredText, int key){
+    public static String encryptText(String enteredText, int key){
         //the key can only be a positive integer between 1 and 26
         if (key>26){
             key=key%26;
@@ -57,6 +59,11 @@ public class Caesar {
 
     }
     public static void main(String[] args) {
+        Scanner userInput = new Scanner(System.in);
+        System.out.println("Enter a string you want to encode: ");
+        String enteredText = userInput.nextLine();
+        System.out.println(encryptText(enteredText,4));
+
 
     }
 }
