@@ -83,7 +83,7 @@ public class Caesar {
                     //Casting to change the data type from int to character
                     char ch = (char) (specificCharacter-key);
 
-                    //if the resulting character is greater than a 'z', go allover the alphabet again
+                    //if the resulting character is less than an 'a', go allover the alphabet again
                     if (ch<'a'){
                         encryptedText += (char) (specificCharacter + (26-key));
                     }
@@ -94,7 +94,7 @@ public class Caesar {
                 } else if (Character.isUpperCase(specificCharacter)) {
                     char ch = (char) (specificCharacter-key);
 
-                    //if the resulting character is greater than a 'Z', go allover the alphabet again
+                    //if the resulting character is less than an 'A', go allover the alphabet again
                     if (ch<'A'){
                         encryptedText += (char) (specificCharacter + (26-key));
                     }
@@ -110,7 +110,7 @@ public class Caesar {
             }
         }
 
-        //the method returns the encrypted text
+        //the method returns the decrypted text
         return encryptedText;
 
     }
@@ -123,8 +123,10 @@ public class Caesar {
         String enteredText = userInput.nextLine();
 
 //        call the encryptText method and pass in a key and the text collected from the user
-        String text1 = encryptText(enteredText,4);
-        String text2 = decryptText(text1,4);
+        String text1 = encryptText(enteredText,1);
+
+//        call the decrypt method to change the text back to what it was before the encryption
+        String text2 = decryptText(text1,1);
         System.out.println(text1 + " becomes " + text2 + " when decrypted");
 
 
