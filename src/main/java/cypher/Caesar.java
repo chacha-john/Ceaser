@@ -29,7 +29,9 @@ public class Caesar {
 
                     //if the resulting character is greater than a 'z', go allover the alphabet again
                     if (ch>'z'){
-                        encryptedText += (specificCharacter - (26-key));
+
+//                        casting to avoid having numbers after the letters are shifted
+                        encryptedText += (char) (specificCharacter - (26-key));
                     }
                     //if the resulting character is within the alphabet, add it as is
                     else{
@@ -40,7 +42,7 @@ public class Caesar {
 
                     //if the resulting character is greater than a 'Z', go allover the alphabet again
                     if (ch>'Z'){
-                        encryptedText += (specificCharacter - (26-key));
+                        encryptedText += (char) (specificCharacter - (26-key));
                     }
                     //if the resulting character is within the alphabet, add it as is
                     else{
@@ -59,9 +61,12 @@ public class Caesar {
 
     }
     public static void main(String[] args) {
+
+//        the scanner collects user input for the string that needs to be encoded
         Scanner userInput = new Scanner(System.in);
-        System.out.println("Enter a string you want to encode: ");
         String enteredText = userInput.nextLine();
+
+//        call the encryptText method and pass in a key and the text collected from the user
         System.out.println(encryptText(enteredText,4));
 
 
