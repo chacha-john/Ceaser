@@ -9,20 +9,17 @@ import java.util.Scanner;
 public class Main {
 
 
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws IOException {
         System.out.println("Hello and Welcome to riko's Ceaser Cypher! Do you want to encode text or decode? Enter 'E' to encode and 'D' to decode!");
 
         InputStreamReader streamReader = new InputStreamReader(System.in);
 
         BufferedReader bufferedReader = new BufferedReader(streamReader);
 
-        String enteredText = null;
-        try {
-            enteredText = bufferedReader.readLine();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if(enteredText.toLowerCase() == "e"){
+        String enteredText = bufferedReader.readLine();
+
+
+        if(enteredText.equalsIgnoreCase("e")){
             try {
                 System.out.println("Enter text to encrypt: ");
 
@@ -38,18 +35,20 @@ public class Main {
 
                 int encryptionKey = streamReader2.nextInt();
 
-                Encode encode = new Encode(plainText,encryptionKey);
+                Encode text = new Encode(plainText,encryptionKey);
 
-                String encryptedText = encode.getEncodedText();
+                text.encrypt();
 
-                System.out.println(plainText + " becomes " + encryptedText + " when encrypted");
+                String encryptedText = text.getEncodedText();
+
+                System.out.println(plainText + " becomes " + encryptedText + " when encrypted with and encryption key of " + encryptionKey + "!");
 
             }
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
 
-        } else if (enteredText.toLowerCase() == "d") {
+        } else if (enteredText.equalsIgnoreCase("d")) {
             try {
                 System.out.println("Enter text to decrypt: ");
 
@@ -67,16 +66,18 @@ public class Main {
 
                 Decode text = new Decode(encryptedText,decryptionKey);
 
+                text.decrypt();
+
                 String decryptedText = text.getPlainText();
 
-                System.out.println(encryptedText + " becomes " + decryptedText + " when encrypted");
+                System.out.println(encryptedText + " becomes " + decryptedText + " when decrypted with a decryption key of " + decryptionKey + "!");
 
             }
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
 
-        }else throw new UnsupportedEncodingException("You entered an invalid choice!");
+        }else throw new IOException("You entered an invalid choice!");
 
     }
 }
